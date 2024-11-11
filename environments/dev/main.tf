@@ -40,3 +40,4 @@ module "dev_app_service" {
   acr_username = module.dev_acr.acr_username
   acr_password = module.dev_acr.acr_password
 }
+

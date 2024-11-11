@@ -12,7 +12,6 @@ module "dev_acr" {
   location           = var.location
 }
 
-
 # # Consuming Vault module
 # module "dev_vault" {
 #   source             = "../../tf_modules/key_vault"

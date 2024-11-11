@@ -8,9 +8,9 @@ variable "rg_name" {
 }
 variable "container_registry" {
   description = "Container registry name"
-  type        = list(string)
+  type        = string
 }
-variable "sku" {
+variable "acr_sku" {
   description = "Container registry sku"
   type        = string
 }

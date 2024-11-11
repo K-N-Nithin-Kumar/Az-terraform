@@ -4,12 +4,12 @@ create_acr = true
 ############# Common Vars #################
 
 rg_name     = "Azure-terraform-AEM"
-location    = "EAST US"
+location    = "Canada Central"
 environment = "dev"
 
 ############# Azure ACR ###################
 
-container_registry = ["dev01aemregistry", "dev02aemregistry"]
+container_registry = "dev01aemregistry"
 acr_sku                = "Standard"
 admin_enabled      = true
 acr_tags = {
@@ -46,3 +46,12 @@ kv_tags = {
   environment = "dev"
   name        = "devaemvault"
 }
+
+# App Service
+app_service_plan_name = "dev01aemappserviceplan"
+app_services      = ["dev01aemappservice", "dev02aemappservice"]
+app_servicetags = {
+  environment = "dev"
+  name        = "devaemappservice"
+}
+

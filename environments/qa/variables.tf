@@ -22,7 +22,7 @@ variable "acr_sku" {
 
 variable "container_registry" {
   description = "Container registry name"
-  type        = list(string)
+  type        = string
 }
 
 variable "admin_enabled" {
@@ -100,3 +100,41 @@ variable "msi_id" {
   description = "The Managed Service Identity ID. If this value isn't null (the default), 'data.azurerm_client_config.current.object_id' will be set to this value."
   default     = null
 }
+variable "kv_tags"{
+    type = map(string)
+}
+
+# App service
+variable "app_service_plan_name" {
+  type        = string
+  description = "The name of the app service plan."
+
+}
+
+variable "app_servicetags" {
+    type        = map(string)
+    description = "The tags for the resource."
+}
+variable "app_services" {
+  type = list(string)
+}
+
+# variable "acr_url" {
+#   type      = string
+#   sensitive = true
+# }
+
+# variable "acr_username" {
+#   type      = string
+#   sensitive = true
+# }
+
+# variable "acr_password" {
+#   type      = string
+#   sensitive = true
+# }
+# variable "asp_sku" {
+#   type        = map(string)
+#   description = "The SKU of the app service plan."
+# }
+

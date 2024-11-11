@@ -119,22 +119,5 @@ variable "app_services" {
   type = list(string)
 }
 
-# variable "acr_url" {
-#   type      = string
-#   sensitive = true
-# }
 
-# variable "acr_username" {
-#   type      = string
-#   sensitive = true
-# }
-
-# variable "acr_password" {
-#   type      = string
-#   sensitive = true
-# }
-# variable "asp_sku" {
-#   type        = map(string)
-#   description = "The SKU of the app service plan."
-# }
 

@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'environments/dev/**' # Trigger on changes in the dev folder
+      
+permissions:
+  id-token: write    # Allows GitHub to generate an OIDC token
+  contents: read     # Required for checkout and other actions
 
 jobs:
   terraform:

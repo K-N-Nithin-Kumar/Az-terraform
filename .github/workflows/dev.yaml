@@ -22,9 +22,9 @@ jobs:
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.ARM_CLIENT_ID }}
-          client-secret: ${{ secrets.ARM_CLIENT_SECRET }}
           tenant-id: ${{ secrets.ARM_TENANT_ID }}
           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          auth-type: federated   # Use federated (OIDC) authentication instead of client-secret
 
       - name: Terraform Init
         working-directory: ./environments/dev
@@ -42,3 +42,55 @@ jobs:
         if: github.event_name == 'push'
         working-directory: ./environments/dev
         run: terraform apply -input=false tfplan
+
+
+
+
+
+
+#         name: Deploy Dev Infrastructure
+
+# on:
+#   push:
+#     paths:
+#       - 'environments/dev/**' # Trigger on changes in the dev folder
+
+# permissions:
+#   id-token: write    # Allow GitHub to generate an OIDC token
+#   contents: read     # Required for checkout and other actions
+
+# jobs:
+#   terraform:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
+
+#       - name: Set up Terraform
+#         uses: hashicorp/setup-terraform@v1
+#         with:
+#           terraform_version: 1.0.0
+
+#       - name: Authenticate with Azure
+#         uses: azure/login@v1
+#         with:
+#           client-id: ${{ secrets.ARM_CLIENT_ID }}
+#           tenant-id: ${{ secrets.ARM_TENANT_ID }}
+#           subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+#           auth-type: federated   # Use federated (OIDC) authentication instead of client-secret
+
+#       - name: Terraform Init
+#         working-directory: ./environments/dev
+#         run: terraform init
+
+#       - name: Terraform Plan
+#         working-directory: ./environments/dev
+#         run: terraform plan -out=tfplan
+
+#       - name: Terraform Apply
+#         if: github.event_name == 'push'
+#         environment: dev # Requires manual approval in GitHub's environment settings
+#         working-directory: ./environments/dev
+#         run: terraform apply -input=false tfplan
+

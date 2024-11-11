@@ -4,6 +4,7 @@ provider "azurerm" {
 
   }
 }
+
 terraform {
   backend "azurerm" {
     resource_group_name  = "Azure-terraform-AEM"
